@@ -57,7 +57,7 @@ class Variable:
         """
         if d_output is None:
             d_output = 1.0
-        backpropagate(self, d_output)
+        backpropagate(self, self.expand(d_output))
 
     @property
     def derivative(self):
@@ -274,7 +274,7 @@ class FunctionBase:
         # Tip: Note when implementing this function that
         # cls.backward may return either a value or a tuple.
         return [
-            (inputs[i], derivative)
+            (inputs[i], inputs[i].expand(derivative))
             for i, derivative in enumerate(wrap_tuple(cls.backward(ctx, d_output)))
             if not is_constant(inputs[i])
         ]

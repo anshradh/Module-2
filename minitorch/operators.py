@@ -51,9 +51,9 @@ def is_close(x, y):
     if (x == float("inf") and y == float("inf")) or (
         x == float("-inf") and y == float("-inf")
     ):
-        return True
+        return float(True)
     else:
-        return abs(x - y) < 1e-2
+        return float(abs(x - y) < 1e-2)
 
 
 def sigmoid(x):
@@ -126,7 +126,7 @@ def log_back(x, d):
 
 def inv(x):
     ":math:`f(x) = 1/x`"
-    return 1 / x
+    return 1.0 / x
 
 
 def inv_back(x, d):
